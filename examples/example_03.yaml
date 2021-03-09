@@ -1,0 +1,16 @@
+openapi: 3.0.0
+info:
+  title: minha api teste com alguns detalhes
+  description: pequeno exemplo de descrição de api com swagger e openapi
+  version: 1.0.0
+servers:
+  - url: www.prod-meuexemplo.com/v1
+    description: production access url
+  - url: www.hmg-meuexemplo.com/v1
+    description: homologação access url
+paths:
+  /ping:
+    get:
+      responses:
+        '200':
+          description: OK

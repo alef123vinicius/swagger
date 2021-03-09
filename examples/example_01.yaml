@@ -1,0 +1,41 @@
+# versão da Especificação OpenAPI
+openapi: 3.0.0
+# A seção info contém informações da API como: titulo, descrição (op), versão
+info:
+  # Nome da API
+  title: Sample API
+  # informações estendidas sobre a API, pode ser multlinha dialeto commonMark e html é suportado
+  description: Optional multiline or single-line description in [CommonMark](http://commonmark.org/help/) or HTML.
+  # String arbitrária que especifica  versão da API. diferente da openapi acima que espefica o OpenAPI
+  version: 0.1.9
+# especifica o servidor API e o URL base. Pode ter um ou vários servidores como produção e homogação
+# os caminho da API são relativos a URL do servidor, exemplo: /users
+# significa: http://api.example.com/v1/users ou http://staging-api.example.com/users como as url abaixo.
+servers:
+    # url base da API de um server
+  - url: http://api.example.com/v1
+    # descrição da url inserida acima
+    description: Optional server description, e.g. Main (production) server
+    # outra url base da API de um server
+  - url: http://staging-api.example.com
+    # descrição da url inserida acima
+    description: Optional server description, e.g. Internal staging server for testing
+# define os endpoints individuais da API e os métodos HTTP suportados pelos endpoints
+# o exemplo abaixo demonstra a descrição do método GET /users
+paths:
+  #path relativo
+  /users:
+    # método
+    get:
+      summary: Returns a list of users.
+      description: Optional extended description in CommonMark or HTML.
+      # corpo da resposta
+      responses:
+        '200':    # status code
+          description: A JSON array of user names
+          content:
+            application/json:
+              schema: 
+                type: array
+                items: 
+                  type: string
